@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
-import { Wrapper } from './UsersListItem.styles';
+//import StyledAverage from 'components/atoms/Average/Average';
+import { Wrapper, StyledAverage, StyledInfo } from './UsersListItem.styles';
+
+const showIndex = (index) => {
+  console.log(`Index: +${index}`);
+};
 
 const UsersListItem = (props) => (
   <Wrapper>
-    <div>{props.userData.average}</div>
-    <div>
+    <StyledAverage number={props.userData.average} />
+    <StyledInfo>
       <p>{props.userData.name}</p>
       <p>{props.userData.attendance}</p>
-    </div>
-
-    <Button />
+    </StyledInfo>
+    <Button onClick={() => showIndex(props.index)} />
   </Wrapper>
 );
 
