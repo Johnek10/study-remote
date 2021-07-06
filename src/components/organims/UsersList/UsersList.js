@@ -10,9 +10,11 @@ import { Wrapper } from './UserList.styles';
 const UsersList = () => (
   <Wrapper>
     <ul>
-      {users.map((userData, i) => (
-        <UsersListItem index={i} userData={userData} />
+   
+      {users.map((userData, index) => (
+        <UsersListItem index={index} userData={userData} />
       ))}
+      
     </ul>
   </Wrapper>
 );

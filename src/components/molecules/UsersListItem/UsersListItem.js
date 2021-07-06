@@ -8,14 +8,14 @@ const showIndex = (index) => {
   console.log(`Index: +${index}`);
 };
 
-const UsersListItem = (props) => (
+const UsersListItem = ({userData: {name, average, attendance}, index}) => (
   <Wrapper>
-    <StyledAverage number={props.userData.average} />
+    <StyledAverage number={average} />
     <StyledInfo>
-      <p>{props.userData.name}</p>
-      <p>{props.userData.attendance}</p>
+      <p>{name}</p>
+      <p>{attendance}</p>
     </StyledInfo>
-    <Button onClick={() => showIndex(props.index)} />
+    <Button onClick={() => showIndex(index)} />
   </Wrapper>
 );
 
