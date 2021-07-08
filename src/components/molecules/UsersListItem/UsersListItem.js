@@ -5,7 +5,7 @@ import Button from 'components/atoms/Button/Button';
 import { Wrapper, StyledAverage, StyledInfo } from './UsersListItem.styles';
 
 const showIndex = (index) => {
-  console.log(`Index: +${index}`);
+  console.log(`Index number: +${index}`);
 };
 
 const UsersListItem = ({userData: {name, average, attendance}, index}) => (
@@ -15,7 +15,7 @@ const UsersListItem = ({userData: {name, average, attendance}, index}) => (
       <p>{name}</p>
       <p>{attendance}</p>
     </StyledInfo>
-    <Button onClick={() => showIndex(index)} />
+    <Button onMouseEnter={() => showIndex(index)} propDupa={'dupa'} />
   </Wrapper>
 );
 
