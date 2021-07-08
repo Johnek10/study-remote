@@ -10,28 +10,28 @@ import { Wrapper } from './UserList.styles';
 class UsersList extends React.Component {
   state = {
     title: true,
+    users,
   };
-  toggleTitle = () => {
-    this.setState((prevstate)=>({title: !prevstate.title }));
+  deleteUser = (name) => {
+    const filterusers = this.state.users.filter(user => user.name !== name);
+    console.log(filterusers);
+    this.setState({users: filterusers});
   };
-  
   render() {
     console.log(this);
     return (
       <Wrapper>
         <h3>{this.state.title ? `User's list` : 'Students list'}</h3>
         <ul>
-          {users.map((userData, index) => (
-            <UsersListItem index={index} userData={userData} />
+          {this.state.users.map((userData, index) => (
+            <UsersListItem index={index} userData={userData} deleteUser={this.deleteUser} />
           ))}
         </ul>
-        <button onClick={this.toggleTitle}>Change title</button>
       </Wrapper>
     );
-    
   }
   testTog() {
-    this.setState((prevstate)=>({title: !prevstate.title }));
+    this.setState((prevstate) => ({ title: !prevstate.title }));
   }
 }
 
