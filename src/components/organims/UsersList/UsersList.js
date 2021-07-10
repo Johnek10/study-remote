@@ -1,5 +1,5 @@
-import React from 'react';
-import users from 'data/users.js';
+import React, { useState, useEffect } from 'react';
+import usersData from 'data/users.js';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { Wrapper } from './UserList.styles';
 
@@ -7,25 +7,19 @@ import { Wrapper } from './UserList.styles';
   return <div>JanM</div>;
 }; */
 
-
-const mockApi=(success)=>{
-  return new Promise((resolve, reject)=>{
-    setTimeout(()=>{
-      if(users){
-        resolve([...users]);
+const mockApi = (success) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (usersData) {
+        resolve([...usersData]);
+      } else {
+        reject({ message: 'Error' });
       }
-      else{
-        reject({message: 'Error'});
-      }
-    },2000);
+    }, 2000);
   });
-}
+};
 
-
-
-
-
-
+/* 
 class UsersList extends React.Component {
   state = {
     title: true,
@@ -70,16 +64,42 @@ class UsersList extends React.Component {
     this.setState((prevstate) => ({ title: !prevstate.title }));
   }
 }
+ */
 
-/* 
-const UsersList = () => (
-  <Wrapper>
-    <ul>
-      {users.map((userData, index) => (
-        <UsersListItem index={index} userData={userData} />
-      ))}
-    </ul>
-  </Wrapper>
-); */
+const UsersList = () => {
+  const [users, setUsers] = useState(usersData);
+  const [isLoading, setLoading] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    mockApi()
+      .then((data) => {
+        setLoading(false);
+        setUsers(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(()=>{
+    console.log('Loading finished');
+  }, [isLoading]);
+  
+  console.log(users);
+  console.log(useState([]));
+  const deleteUser = (name) => {
+    const filterusers = users.filter((user) => user.name !== name);
+    console.log(filterusers);
+    setUsers(filterusers);
+  };
+  return (
+    <Wrapper>
+      <h1>{isLoading ? '...Loading' : `User's list`}</h1>
+      {users.map((usersData) => {
+        console.log(usersData);
+        return <UsersListItem deleteUser={deleteUser} userData={usersData} />;
+      })}
+    </Wrapper>
+  );
+};
 
 export default UsersList;

@@ -9,8 +9,10 @@ const showIndex = (index) => {
   console.log(`Index number: +${index}`);
 };
 */
-const UsersListItem = ({ userData: { name, average, attendance }, index, deleteUser }) => (
-  <Wrapper>
+const UsersListItem = ({ userData: { name, average, attendance }, index, deleteUser }) => {
+  console.log(average);
+  return (
+    <Wrapper>
     <StyledAverage number={average} />
     <StyledInfo>
       <p>{name}</p>
@@ -18,7 +20,10 @@ const UsersListItem = ({ userData: { name, average, attendance }, index, deleteU
     </StyledInfo>
     <Button onClick={()=>deleteUser(name)} />
   </Wrapper>
-);
+  )
+}
+  
+
 
 UsersListItem.propTypes = {
   userData: PropTypes.shape({
