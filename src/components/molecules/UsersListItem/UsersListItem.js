@@ -8,14 +8,14 @@ const showIndex = (index) => {
   console.log(`Index: +${index}`);
 };
 
-const UsersListItem = ({userData: {name, average, attendance}, index}) => (
+const UsersListItem = ({deleteUser, userData: {name, average, attendance}, index}) => (
   <Wrapper>
     <StyledAverage number={average} />
     <StyledInfo>
       <p>{name}</p>
       <p>{attendance}</p>
     </StyledInfo>
-    <Button onClick={() => showIndex(index)} />
+    <Button onClick={()=>{deleteUser(name)}} />
   </Wrapper>
 );
 
