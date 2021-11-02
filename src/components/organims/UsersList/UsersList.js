@@ -1,69 +1,56 @@
-import React from 'react';
-import users from 'data/users.js';
+import React, { useState, useEffect } from 'react';
+import { users as usersData } from 'data/users.js';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { Wrapper } from './UserList.styles';
 
 const mockAPI = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve([...users]);
+      resolve([...usersData]);
       reject({ error: 'message' });
     }, 2000);
   });
 };
-class UsersList extends React.Component {
-  state = {
-    users: [],
-    isLoading: true,
-  };
-  componentDidMount() {
-  
+
+const UsersList = () => {
+  console.log(usersData);
+  // console.log(useState([]));
+  const [users, setUsers] = useState([]);
+  const [isLoading, setLoading] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
     mockAPI()
       .then((data) => {
-        this.setState({isLoading: false})
-        this.setState({users: data});
+        setUsers(data);
+        setLoading(false);
       })
       .catch((e) => {
         console.log(e);
       });
-  }
-  componentDidUpdate = (prevState) => {
-    if(prevState.isLoading !== this.state.isLoading){
-      console.log('dupa')
-    }
+  }, []);
+
+  useEffect(()=>{
+    console.log('Changed sth in loading state')
+  },[isLoading])
+  const deleteUser = (name) => {
+    const filteredUser = users.filter((element) => element.name !== name);
+    setUsers(filteredUser);
   };
-  componentWillUnmount = () => {};
-  deleteUser = (name) => {
-    const filteredUsers = this.state.users.filter((user) => name !== user.name);
-    this.setState({ users: filteredUsers });
-    console.log(this.state.users);
-  };
-  render() {
-    return (
-      <Wrapper>
-        <h1>{this.state.isLoading ? 'Loading...' : "User's list"}</h1>
-        <ul>
-          {this.state.users.map((userData, index) => (
-            <UsersListItem
-              deleteUser={this.deleteUser}
-              index={index}
-              userData={userData}
-            />
-          ))}
-        </ul>
-      </Wrapper>
-    );
-  }
-}
-/* const UsersList = () => (
-  <Wrapper>
-    <ul>
-      {users.map((userData, index) => (
-        <UsersListItem index={index} userData={userData} />
-      ))}
-      
-    </ul>
-  </Wrapper>
-); */
+  return (
+    <Wrapper>
+      <h1>{isLoading ? 'Loading...' : "User's list"}</h1>
+      <ul>
+        {users.map((userData, index) => (
+          <UsersListItem
+            deleteUser={deleteUser}
+            index={index}
+            userData={userData}
+          />
+        ))}
+      </ul>
+    </Wrapper>
+  );
+};
 
 export default UsersList;

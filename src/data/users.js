@@ -1,4 +1,4 @@
-const users = [
+export const users = [
   {
     name: 'Jan Sygnowski',
     attendance: '71%',
@@ -21,4 +21,3 @@ const users = [
   },
 ];
 
-export default users;
