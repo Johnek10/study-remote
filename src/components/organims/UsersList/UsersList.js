@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { users as usersData } from 'data/users.js';
+import Button from 'components/atoms/Button/Button';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { Wrapper } from './UserList.styles';
 import { FormField } from 'components/molecules/FormField/FormField';
@@ -22,12 +23,29 @@ const UsersList = () => {
   /*console.log('tableState')
   const tableState=useState(''); 
   console.log(tableState);*/
-  const [nameValue, setNameValue]=useState('');
+  const [formsValue, setFormsValue] = useState({
+    name: '',
+    attendance: '',
+    average: '',
+  });
 
-  const handleName=(e)=>{
-    //console.log('dupa')
-    setNameValue(e.target.value);
-    console.log(nameValue)
+  const handleName = (e) => {
+    console.log(e.target.name);
+    setFormsValue({
+      ...formsValue,
+      [e.target.name]: e.target.value, //overwritten existed key
+    });
+  };
+
+  const handleAddUser=(e)=>{
+    e.preventDefault();
+    setUsers([
+      ...users,{
+        name: formsValue.name,
+        attendance: formsValue.attendance,
+        average: formsValue.average,
+      }
+    ])
   }
 
   useEffect(() => {
@@ -51,10 +69,29 @@ const UsersList = () => {
   };
   return (
     <>
-      <Wrapper>
-        <FormField label="Name" id="name" name="name" value={nameValue} onChange={handleName}/>
-        <FormField label="Attendance" id="attendance" name="name"/>
-        <FormField label="Average" id="average" name="name"/>
+      <Wrapper as="form" onSubmit={handleAddUser}>
+        <FormField
+          label="Name"
+          id="name"
+          name="name"
+          value={formsValue.name}
+          onChange={handleName}
+        />
+        <FormField
+          label="Attendance"
+          id="attendance"
+          name="attendance"
+          value={formsValue.attendance}
+          onChange={handleName}
+        />
+        <FormField
+          label="Average"
+          id="average"
+          name="average"
+          value={formsValue.average}
+          onChange={handleName}
+        />
+        <Button></Button>
       </Wrapper>
       <Wrapper>
         <h1>{isLoading ? 'Loading...' : "User's list"}</h1>
