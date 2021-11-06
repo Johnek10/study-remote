@@ -12,10 +12,10 @@ const Wrapper = styled.div`
   }
 `;
 
-export const FormField = ({ label, name, id, type = 'text', ...props }) => (
+export const FormField = ({ label, value, onChange, name, id, type = 'text', ...props }) => (
   <Wrapper>
     <Label htmlFor={id}>{label}</Label>
-    <Input id={id} name={name} type={type} />
+    <Input id={id} name={name} type={type} value={value} onChange={onChange}/>
   </Wrapper>
 );
 

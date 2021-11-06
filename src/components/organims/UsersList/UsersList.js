@@ -18,7 +18,17 @@ const UsersList = () => {
   const [users, setUsers] = useState([]);
   console.log(users);
   const [isLoading, setLoading] = useState([]);
-  console.log(isLoading);
+  //console.log(isLoading);
+  /*console.log('tableState')
+  const tableState=useState(''); 
+  console.log(tableState);*/
+  const [nameValue, setNameValue]=useState('');
+
+  const handleName=(e)=>{
+    //console.log('dupa')
+    setNameValue(e.target.value);
+    console.log(nameValue)
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -42,7 +52,7 @@ const UsersList = () => {
   return (
     <>
       <Wrapper>
-        <FormField label="Name" id="name" name="name"/>
+        <FormField label="Name" id="name" name="name" value={nameValue} onChange={handleName}/>
         <FormField label="Attendance" id="attendance" name="name"/>
         <FormField label="Average" id="average" name="name"/>
       </Wrapper>
