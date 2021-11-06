@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { users as usersData } from 'data/users.js';
-import Button from 'components/atoms/Button/Button';
+import {Button} from 'components/atoms/Button/Button';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { Wrapper } from './UserList.styles';
 import { FormField } from 'components/molecules/FormField/FormField';
@@ -91,7 +91,7 @@ const UsersList = () => {
           value={formsValue.average}
           onChange={handleName}
         />
-        <Button></Button>
+        <Button>Add</Button>
       </Wrapper>
       <Wrapper>
         <h1>{isLoading ? 'Loading...' : "User's list"}</h1>
