@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 
 export const Wrapper = styled.div`
-  background-color: ${(props) => console.log(props.theme)};
+  background-color: #32a842;
   display: flex;
   justify-content: center;
   align-items: center;

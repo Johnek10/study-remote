@@ -8,16 +8,21 @@ const showIndex = (index) => {
   console.log(`Index: +${index}`);
 };
 
-const UsersListItem = ({deleteUser, userData: {name, average, attendance}, index}) => (
-  <Wrapper>
+const UsersListItem = ({deleteUser, userData: {name, average, attendance}, index}) => {
+  console.log(deleteUser)
+  return(
+    <Wrapper>
     <StyledAverage number={average} />
     <StyledInfo>
       <p>{name}</p>
       <p>{attendance}</p>
     </StyledInfo>
-    <DeleteButton onClick={()=>{deleteUser(name)}} />
+    <DeleteButton onClick={()=>{
+      deleteUser(name)}} />
   </Wrapper>
-);
+  )
+ 
+  }
 
 UsersListItem.propTypes = {
   userData: PropTypes.shape({
