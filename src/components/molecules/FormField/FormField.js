@@ -3,6 +3,7 @@ import { Label } from 'components/atoms/Label/Label';
 import { Input } from 'components/atoms/Input/Input';
 import PropTypes from 'prop-types';
 
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -25,3 +26,5 @@ FormField.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string,
 };
+
+export default FormField;
