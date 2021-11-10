@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'components/atoms/Button/Button';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 import { Wrapper } from './UserList.styles';
-import { FormField } from 'components/molecules/FormField/FormField';
-
+import { FormField } from 'components/molecules/FormField/FormField'
 const UsersList = ({deleteUser, users}) => {
   return (
     <>
