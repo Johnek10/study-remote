@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DeleteButton from 'components/atoms/DeleteButton/DeleteButton';
 //import StyledAverage from 'components/atoms/Average/Average';
 import { Wrapper, StyledAverage, StyledInfo } from './UsersListItem.styles';
-import { UsersContext } from 'views/Root';
+import { UsersContext } from 'providers/UsersProviders';
 
 const showIndex = (index) => {
   console.log(`Index: +${index}`);

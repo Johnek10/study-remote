@@ -4,7 +4,7 @@ import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import { Title } from 'components/atoms/Title/Title';
-import { UsersContext } from './Root';
+import { UsersContext } from 'providers/UsersProviders';
 
 const AddUser = () => {
   const context=useContext(UsersContext);

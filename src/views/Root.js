@@ -9,53 +9,15 @@ import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import Dashboard from 'views/Dashboard';
 import AddUser from 'views/AddUser';
-
-export const UsersContext = React.createContext({
-  users: [],
-  handleAddUser: () => {},
-  deleteUser: () => {},
-});
+import UsersProvider from 'providers/UsersProviders';
 
 const Root = () => {
-  const [users, setUsers] = useState(userData);
-  const [formsValue, setFormsValue] = useState({
-    name: '',
-    attendance: '',
-    average: '',
-  });
-
-  const handleAddUser = (values) => {
-    setUsers([
-      ...users,
-      {
-        name: values.name,
-        attendance: values.attendance,
-        average: values.average,
-      },
-    ]);
-    setFormsValue({
-      name: '',
-      attendance: '',
-      average: '',
-    });
-  };
-  const deleteUser = (name) => {
-    const filteredUser = users.filter((element) => element.name !== name);
-    setUsers(filteredUser);
-  };
-
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <UsersContext.Provider
-            value={{
-              users,
-              handleAddUser,
-              deleteUser,
-            }}
-          >
+          <UsersProvider>
             <Wrapper>
               <Switch>
                 <Route path="/add-user" exact>
@@ -66,7 +28,7 @@ const Root = () => {
                 </Route>
               </Switch>
             </Wrapper>
-          </UsersContext.Provider>
+          </UsersProvider>
         </MainTemplate>
       </ThemeProvider>
     </Router>
