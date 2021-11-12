@@ -8,7 +8,7 @@ export const theme = {
     success: '#8FCB81',
     error: '#CB8581',
     warning: '#E1D888',
-    lightOrange: '#ffa51f'
+    lightOrange: '#ffa51f',
   },
   fontSize: {
     l: '17px',

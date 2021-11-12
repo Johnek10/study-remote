@@ -8,5 +8,5 @@ export const Wrapper = styled.div`
   padding: 0;
   display: grid;
   grid-template-columns: 150px 1fr;
-  background-color: ${({theme})=>theme.colors.lightOrange};
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 `;

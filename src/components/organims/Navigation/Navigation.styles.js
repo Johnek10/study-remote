@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid darkmagenta;
+  border-right: 1px solid #e1d888;
   justify-content: flex-start;
   padding: 30px 0;
 `;

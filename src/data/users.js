@@ -20,4 +20,3 @@ export const users = [
     average: '4.5',
   },
 ];
-

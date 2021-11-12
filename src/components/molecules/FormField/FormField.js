@@ -3,20 +3,27 @@ import { Label } from 'components/atoms/Label/Label';
 import { Input } from 'components/atoms/Input/Input';
 import PropTypes from 'prop-types';
 
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  label{
-      margin: 12px 0;
+  label {
+    margin: 12px 0;
   }
 `;
 
-export const FormField = ({ label, value, onChange, name, id, type = 'text', ...props }) => (
+export const FormField = ({
+  label,
+  value,
+  onChange,
+  name,
+  id,
+  type = 'text',
+  ...props
+}) => (
   <Wrapper>
     <Label htmlFor={id}>{label}</Label>
-    <Input id={id} name={name} type={type} value={value} onChange={onChange}/>
+    <Input id={id} name={name} type={type} value={value} onChange={onChange} />
   </Wrapper>
 );
 

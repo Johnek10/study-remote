@@ -1,11 +1,9 @@
-import UsersList from 'components/organims/UsersList/UsersList';
-import React, { useState } from 'react';
-import { users as userData } from 'data/users.js';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../assets/styles/GlobalStyle';
 import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.styles';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate';
 import Dashboard from 'views/Dashboard';
 import AddUser from 'views/AddUser';
@@ -24,7 +22,7 @@ const Root = () => {
                   <AddUser />
                 </Route>
                 <Route path="/">
-                  <Dashboard deleteUser={deleteUser} users={users} />
+                  <Dashboard />
                 </Route>
               </Switch>
             </Wrapper>
