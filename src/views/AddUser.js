@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useReducer } from 'react';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
@@ -6,33 +6,45 @@ import { Title } from 'components/atoms/Title/Title';
 import { UsersContext } from 'providers/UsersProviders';
 
 const AddUser = () => {
-  const context = useContext(UsersContext);
-  const [formsValue, setFormsValue] = useState({
+  const startFormState={
     name: '',
     attendance: '',
     average: '',
-  });
-  const handleName = (e) => {
-    setFormsValue({
-      ...formsValue,
-      [e.target.name]: e.target.value, //overwritten existed key
-    });
+  }
+  const reducer = (state, action) => {
+    switch(action.type){
+      case 'INPUT CHANGE':
+        return {
+          ...state,
+          [action.field]: action.value
+        }
+      case 'CLEAR FORMVALUES':
+        return startFormState;
+      default:
+        return state;
+    }
   };
+
+  const context = useContext(UsersContext);
+  const [formsValue, dispatch] = useReducer(reducer, startFormState);
+  const handleName = (e) => {
+    dispatch({
+      type: 'INPUT CHANGE',
+      field: e.target.name,
+      value: e.target.value
+    })
+    };
 
   const handleSubmitUser = (e) => {
     e.preventDefault();
     context.handleAddUser(formsValue);
-    setFormsValue({
-      name: '',
-      attendance: '',
-      average: '',
-    });
+    dispatch({type : 'CLEAR FORMVALUES'});
   };
 
   return (
     <ViewWrapper as="form" onSubmit={handleSubmitUser}>
-      <Title>Add new student</Title>
-      <FormField
+      <Title>Add User</Title>
+<FormField
         label="Name"
         id="name"
         name="name"
