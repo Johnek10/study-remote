@@ -32,7 +32,7 @@ const SearchBar = () => (
         <strong>Student</strong>
       </p>
     </StatusInfo>
-    <Input/>
+    <Input />
   </SearchBarWrapper>
 );
 
