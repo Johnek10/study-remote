@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   padding: 0;
   display: grid;
   grid-template-columns: 150px 1fr 0.8fr;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: 90px 1fr;
+  overflow-y: hidden;
   background-color: ${({ theme }) => theme.colors.lightGrey};
 `;

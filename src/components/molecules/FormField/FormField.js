@@ -23,7 +23,14 @@ export const FormField = ({
 }) => (
   <Wrapper>
     <Label htmlFor={id}>{label}</Label>
-    <Input id={id} name={name} type={type} value={value} onChange={onChange} data-testid={label}/>
+    <Input
+      id={id}
+      name={name}
+      type={type}
+      value={value}
+      onChange={onChange}
+      data-testid={label}
+    />
   </Wrapper>
 );
 
