@@ -3,10 +3,11 @@ import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.nav`
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #e1d888;
+  overflow: hidden;
   justify-content: flex-start;
   padding: 30px 0;
   grid-row: 1 / 3;
