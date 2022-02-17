@@ -9,16 +9,21 @@ const UsersListItem = ({ userData: { name, average, attendance } }) => {
   const { deleteUser } = useContext(UsersContext);
   return (
     <Wrapper>
-      <StyledAverage number={average} />
+      <StyledAverage number={average}>{average}</StyledAverage>
       <StyledInfo>
-        <p>{name}</p>
+        <p>
+          <span>{name}</span>
+          <span>
+            <DeleteButton
+              onClick={() => {
+                deleteUser(name);
+              }}
+            />
+          </span>
+        </p>
+
         <p>{attendance}</p>
       </StyledInfo>
-      <DeleteButton
-        onClick={() => {
-          deleteUser(name);
-        }}
-      />
     </Wrapper>
   );
 };

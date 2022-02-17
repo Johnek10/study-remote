@@ -4,14 +4,12 @@ import { Wrapper } from './UserList.styles';
 const UsersList = ({ users }) => {
   return (
     <>
-      <Wrapper>
-        <h1>User's list</h1>
-        <ul>
-          {users.map((userData, index) => (
-            <UsersListItem key={userData.name} userData={userData} />
-          ))}
-        </ul>
-      </Wrapper>
+      <h1>Students list</h1>
+      <ul>
+        {users.map((userData, index) => (
+          <UsersListItem key={userData.name} userData={userData} />
+        ))}
+      </ul>
     </>
   );
 };

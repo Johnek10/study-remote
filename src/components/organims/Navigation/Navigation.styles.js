@@ -3,10 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.nav`
   width: 100%;
-  height: 90%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #e1d888;
+  border-right: 1px solid ${({theme})=>theme.colors.darkGrey};
   overflow: hidden;
   justify-content: flex-start;
   padding: 30px 0;
@@ -15,7 +15,7 @@ export const Wrapper = styled.nav`
 `;
 
 export const Logo = styled.div`
-  background-color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.lightRed};
   width: 100%;
   height: 60px;
   display: flex;

@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 
 export const Wrapper = styled.li`
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   position: relative;
 
   &:not(:last-child)::after {
@@ -23,8 +23,9 @@ export const StyledAverage = styled.div`
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.black};
   font-weight: bold;
+  background-color: azure;
   /*
  // background: ${({ theme, value }) => {
     // if (value > 4) return theme.colors.success;
@@ -36,6 +37,7 @@ export const StyledAverage = styled.div`
 `;
 
 export const StyledInfo = styled.div`
+  width: 100%;
   padding: 25px 20px;
   p {
     margin: 0;
@@ -44,6 +46,7 @@ export const StyledInfo = styled.div`
   p:first-child {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-weight: bold;
     font-size: ${({ theme }) => theme.fontSize.l};
   }

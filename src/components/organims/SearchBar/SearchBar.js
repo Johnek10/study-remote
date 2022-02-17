@@ -6,7 +6,7 @@ export const SearchBar = () => (
     <StatusInfo>
       <p>Logged as:</p>
       <p>
-        <strong>Student</strong>
+        <strong>Teacher</strong>
       </p>
     </StatusInfo>
     <Input />
