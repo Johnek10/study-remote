@@ -11,7 +11,7 @@ const Navigation = () => {
           Remote
         </h1>
       </Logo>
-      <StyledLink to="/" exact>
+      <StyledLink to="/group" exact>
         Dashboard
       </StyledLink>
       <StyledLink to="/add-user">Add user</StyledLink>

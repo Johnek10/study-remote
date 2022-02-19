@@ -6,7 +6,7 @@ export const Wrapper = styled.nav`
   height: 100%;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid ${({theme})=>theme.colors.darkGrey};
+  border-right: 1px solid ${({ theme }) => theme.colors.darkGrey};
   overflow: hidden;
   justify-content: flex-start;
   padding: 30px 0;

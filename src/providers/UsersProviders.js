@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { users as userData } from 'data/users';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 export const UsersContext = React.createContext({
   users: [],
   handleAddUser: () => {},
@@ -7,7 +7,26 @@ export const UsersContext = React.createContext({
 });
 
 const UsersProvider = ({ children }) => {
-  const [users, setUsers] = useState(userData);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('/students')
+      .then(({ data: { students } }) => {
+        setUsers(students);
+        //console.log(data);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }, []);
+
+  /*   useEffect(() => {
+    axios.get(`/students/:${id}`)
+    .then(({data}) => {
+      
+    })
+  }) */
   const handleAddUser = (values) => {
     setUsers([
       ...users,

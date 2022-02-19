@@ -14,21 +14,21 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 
-export const TitleWrapper=styled.h3`
- font-weight: bold;
+export const TitleWrapper = styled.h3`
+  font-weight: bold;
 `;
-export const DateWrapper=styled.div`
+export const DateWrapper = styled.div`
   width: 50px;
   height: 30px;
-  
 `;
-export const ContentWrapper=styled.div`
-display: flex;
-img{
-  margin-left: 20px;;
-  max-width: 150px;
-  object-fit: cover;
-}`
+export const ContentWrapper = styled.div`
+  display: flex;
+  img {
+    margin-left: 20px;
+    max-width: 150px;
+    object-fit: cover;
+  }
+`;
 export const NewsSectionHeader = styled.h2`
   margin-right: auto;
   color: ${({ theme }) => theme.colors.darkGrey};
@@ -45,4 +45,3 @@ export const ArticleWrapper = styled(ViewWrapper)`
     line-height: 1.6;
   }
 `;
-

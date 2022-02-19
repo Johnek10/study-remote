@@ -1,6 +1,6 @@
 import React from 'react';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
-import { Wrapper } from './UserList.styles';
+
 const UsersList = ({ users }) => {
   return (
     <>

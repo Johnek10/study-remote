@@ -10,7 +10,6 @@ import {
 import { Button } from 'components/atoms/Button/Button';
 import axios from 'axios';
 
-const API_TOKEN = '7c09ddbde99b048db96de5397e5e84';
 const NewsSection = () => {
   const [info, setInfo] = useState([]);
 
@@ -48,20 +47,19 @@ const NewsSection = () => {
           },
         }) => {
           setInfo(allInformation);
-          console.log(allInformation);
         }
       )
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  
+
   return (
     <Wrapper>
       <NewsSectionHeader>News information</NewsSectionHeader>
 
       {info.map(({ title, text, image, date }) => (
-        <ArticleWrapper data-id='dupa'>
+        <ArticleWrapper data-id="dupa">
           <TitleWrapper>{title}</TitleWrapper>
           <DateWrapper>{date}</DateWrapper>
           <ContentWrapper>
