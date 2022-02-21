@@ -11,7 +11,6 @@ export const useStudents = () => {
     axios
       .get('/groups')
       .then(({ data }) => {
-        console.log(data);
         setGroups(data.groups);
       })
       .catch((error) => {
@@ -24,7 +23,6 @@ export const useStudents = () => {
     axios
       .get(`/students/:${id || groups[0]}`)
       .then(({ data }) => {
-        console.log(data);
         setStudents(data.students);
       })
       .catch((error) => {
@@ -32,8 +30,36 @@ export const useStudents = () => {
       });
   }, [id]);
 
+  const findStudents = async (searchPhr) => {
+    try {
+      const { data } = await axios.post('/students/search', {
+        searchPhr,
+      });
+
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  /*   const students=[];
+    axios
+      .post('/students/search', {
+        searchPhr: searchPhr,
+      })
+      .then(({data}) => {
+        console.log(data);
+        students.push(data)
+    })
+      .catch((error) => {
+        console.log(error);
+      });
+      return students;
+  }; */
+
   return {
     students,
     groups,
+    findStudents,
   };
 };
