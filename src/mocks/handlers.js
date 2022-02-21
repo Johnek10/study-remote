@@ -6,7 +6,6 @@ export const handlers = [
   rest.get('/students/:group', (req, res, ctx) => {
     if (req.params.group) {
       const group = req.params.group[1];
-      console.log(group);
       const groupStudents = students.filter((e) => e.group === group);
       return res(
         ctx.status(200),
