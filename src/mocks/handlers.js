@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { students } from './data/students';
+import { groups } from './data/groups';
 
 export const handlers = [
   rest.get('/students/:group', (req, res, ctx) => {
@@ -21,4 +22,12 @@ export const handlers = [
       })
     );
   }),
+  rest.get('/groups', (req, res, ctx) => {
+      return res(
+          ctx.status(200),
+          ctx.json({
+              groups,
+          })
+      )
+  })
 ];

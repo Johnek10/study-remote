@@ -12,7 +12,6 @@ import {
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import Dashboard from 'views/Dashboard';
 import AddUser from 'views/AddUser';
-import UsersProvider from 'providers/UsersProviders';
 
 const Root = () => {
   return (
@@ -28,7 +27,7 @@ const Root = () => {
               <Route path="/add-user" exact>
                 <AddUser />
               </Route>
-              <Route path="/group/:id">
+              <Route path="/group/:id?">
                 <Dashboard />
               </Route>
             </Switch>

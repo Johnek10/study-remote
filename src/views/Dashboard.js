@@ -1,29 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
 import UsersList from 'components/organims/UsersList/UsersList';
-import { useParams } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react/cjs/react.development';
+import { UsersContext } from 'providers/UsersProviders';
+import { useStudents } from 'hooks/useStudents';
 
 const Dashboard = () => {
   const { id } = useParams();
-  const [students, setStudents] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get(`/students/:${id}`)
-      .then(({ data }) => {
-        console.log(data);
-        setStudents(data.students);
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-  }, []);
+  const { students, groups } = useStudents();
+  console.log(groups);
+  console.log(id);
+  if (!id) {
+    return <Redirect to={`group/${groups[0]}`} />;
+  }
 
   return (
     <ViewWrapper>
-      <UsersList users={students}/>
+      <nav>
+        {groups.map((group) => (
+          <Link to={`/group/${group}`}>{group}</Link>
+        ))}
+      </nav>
+      <UsersList users={students} />
     </ViewWrapper>
   );
 };

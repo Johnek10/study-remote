@@ -11,22 +11,17 @@ const UsersProvider = ({ children }) => {
 
   useEffect(() => {
     axios
-      .get('/students')
+      .get('/students/:A')
       .then(({ data: { students } }) => {
         setUsers(students);
-        //console.log(data);
+        console.log('provider');
+        console.log(students);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
   }, []);
 
-  /*   useEffect(() => {
-    axios.get(`/students/:${id}`)
-    .then(({data}) => {
-      
-    })
-  }) */
   const handleAddUser = (values) => {
     setUsers([
       ...users,
@@ -39,6 +34,7 @@ const UsersProvider = ({ children }) => {
   };
   const deleteUser = (name) => {
     const filteredUser = users.filter((element) => element.name !== name);
+    console.log(filteredUser);
     setUsers(filteredUser);
   };
   return (
