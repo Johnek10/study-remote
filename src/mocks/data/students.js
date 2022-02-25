@@ -41,4 +41,40 @@ export const students = [
     average: '3.9',
     group: 'C',
   },
+  {
+    id: '7',
+    name: 'Marian Babelek',
+    attendance: '76%',
+    average: '5.0',
+    group: 'A',
+  },
+  {
+    id: '8',
+    name: 'Lukasz Kwiatek',
+    attendance: '81%',
+    average: '4.7',
+    group: 'B',
+  },
+  {
+    id: '8',
+    name: 'Maria Owczarska',
+    attendance: '95%',
+    average: '4.6',
+    group: 'C',
+  },
+  {
+    id: '9',
+    name: 'Zenon Kawka',
+    attendance: '732%',
+    average: '4.3',
+    group: 'B',
+  },
+  {
+    id: '10',
+    name: 'Anna Miesko',
+    attendance: '83%',
+    average: '4.9',
+    group: 'B',
+  },
+  
 ];

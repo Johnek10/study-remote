@@ -27,12 +27,12 @@ export const SearchWrapper = styled.div`
 export const SearchResults = styled.ul`
   z-index: 2;
   position: absolute;
-  max-height: 500px;
+  max-height: 200px;
   padding: 10px;
   border-radius: 10px;
   list-style: none;
-
   width: 100%;
+  overflow-y: scroll;
   left: 0;
   top: 50px;
   display: flex;
@@ -40,11 +40,17 @@ export const SearchResults = styled.ul`
   top: 35px;
   left: 7px;
   background-color: ${({ theme }) => theme.colors.grey};
+  visibility: ${({isShow})=> isShow ? 'visible' : 'hidden'}
+`;
 
-  li {
-    font-weight: bold;
+export const SearchResultsItem = styled.li`
+  font-weight: bold;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: ${({ theme, highlighted }) =>
+    highlighted ? theme.colors.lightRed : theme.colors.grey};
 
-    width: 100%;
-    padding: 20px 10px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightGreyTwo};
   }
 `;
