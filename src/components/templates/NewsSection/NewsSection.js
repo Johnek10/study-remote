@@ -52,7 +52,7 @@ const NewsSection = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [query]);
 
   return (
     <Wrapper>
@@ -64,7 +64,7 @@ const NewsSection = () => {
           <DateWrapper>{date}</DateWrapper>
           <ContentWrapper>
             <p>{text}</p>
-            <img src={image.url} />
+            <img src={image.url} alt="" />
           </ContentWrapper>
           <Button>Read more</Button>
         </ArticleWrapper>

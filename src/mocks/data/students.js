@@ -76,5 +76,4 @@ export const students = [
     average: '4.9',
     group: 'B',
   },
-  
 ];

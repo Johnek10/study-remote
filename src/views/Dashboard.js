@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { ViewWrapper } from 'components/molecules/ViewWrapper/ViewWrapper';
+import React, { useEffect, useState } from 'react';
 import UsersList from 'components/organims/UsersList/UsersList';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import { Wrapper, StudentsWrapper, TitleWrapper } from './Dashborad.styles';
@@ -8,11 +7,28 @@ import { useStudents } from 'hooks/useStudents';
 
 const Dashboard = () => {
   const { id } = useParams();
-  const { students, groups } = useStudents();
-  if (!id && groups.length > 0) {
-    return <Redirect to={`group/${groups[0]}`} />;
-  }
+  const [students, setStudents] = useState();
+  const [groups, setGroups] = useState([]);
 
+  const { getStudents, getGroups } = useStudents();
+
+  useEffect(() => {
+    (async () => {
+      const data = await getGroups();
+      setGroups(data);
+    })();
+  }, [getGroups]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await getStudents();
+      setStudents(data);
+    })();
+  }, [id, getStudents]);
+
+  if (!id) {
+    return <Redirect to={`group/A`} />;
+  }
   return (
     <Wrapper>
       <TitleWrapper>

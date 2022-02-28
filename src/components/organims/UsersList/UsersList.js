@@ -1,7 +1,7 @@
 import React from 'react';
 import UsersListItem from 'components/molecules/UsersListItem/UsersListItem';
 
-const UsersList = ({ users }) => {
+const UsersList = ({ users = [] }) => {
   return (
     <>
       <h1>Students list</h1>

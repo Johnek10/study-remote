@@ -40,7 +40,7 @@ export const SearchResults = styled.ul`
   top: 35px;
   left: 7px;
   background-color: ${({ theme }) => theme.colors.grey};
-  visibility: ${({isShow})=> isShow ? 'visible' : 'hidden'}
+  visibility: ${({ isShow }) => (isShow ? 'visible' : 'hidden')};
 `;
 
 export const SearchResultsItem = styled.li`

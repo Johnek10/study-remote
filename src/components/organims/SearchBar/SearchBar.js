@@ -4,16 +4,14 @@ import {
   SearchWrapper,
   StatusInfo,
   SearchResults,
-  SearchResultsItem
+  SearchResultsItem,
 } from './SearchBar.styles';
 import { Input } from 'components/atoms/Input/Input';
 import { useStudents } from 'hooks/useStudents';
 import { useCombobox } from 'downshift';
 
-
 export const SearchBar = () => {
   const [matchingStudents, setmatchingStudents] = useState([]);
- // const [searchPhr, setsearchPhr] = useState('');
 
   const { findStudents } = useStudents();
 
@@ -49,27 +47,24 @@ export const SearchBar = () => {
       <SearchWrapper {...getComboboxProps()}>
         <Input name="Search" id="Search" {...getInputProps()} />
 
-        <SearchResults isShow={isOpen && matchingStudents.length> 0} {...getMenuProps()}>
+        <SearchResults
+          isShow={isOpen && matchingStudents.length > 0}
+          {...getMenuProps()}
+        >
           {isOpen &&
             matchingStudents.map((item, index) => (
-              <SearchResultsItem highlighted={highlightedIndex==index} {...getItemProps({ item, index })} key={item.id}>
+              <SearchResultsItem
+                highlighted={highlightedIndex === index}
+                {...getItemProps({ item, index })}
+                key={item.id}
+              >
                 {item.name}
               </SearchResultsItem>
             ))}
         </SearchResults>
-        
       </SearchWrapper>
     </SearchBarWrapper>
   );
 };
 
 export default SearchBar;
-
-/* 
-
-{searchPhr && matchingStudents.length > 0 ? (
-  <SearchResults {...getMenuProps()}>
-    {matchingStudents.map((params) => (
-      <li>{params.name}</li>
-    ))}
-  </SearchResults> */
